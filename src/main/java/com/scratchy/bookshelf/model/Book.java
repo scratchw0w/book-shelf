@@ -24,8 +24,8 @@ public class Book {
     @Field(value = "year")
     private int year;
 
-    @Field(value = "genre")
-    private Genres genre;
+    // @Field(value = "genre")
+    // private List<Genres> genre;
 
     public Book() {}
 
@@ -35,6 +35,11 @@ public class Book {
         if(Objects.requireNonNull(year) > 2020) 
             throw new IllegalArgumentException(year + " is greater than 2020");
         this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return "book: " + title + ", " + author + ", " + year;
     }
 
 }
