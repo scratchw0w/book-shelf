@@ -24,17 +24,18 @@ public class Book {
     @Field(value = "year")
     private int year;
 
-    // @Field(value = "genre")
-    // private List<Genres> genre;
+    @Field(value = "genre")
+    private Genres genre;
 
     public Book() {}
 
-    public Book(String title, String author, int year) {
+    public Book(String title, String author, int year, Genres genre) {
         this.title = Objects.requireNonNull(title);
         this.author = Objects.requireNonNull(author);
         if(Objects.requireNonNull(year) > 2020) 
             throw new IllegalArgumentException(year + " is greater than 2020");
         this.year = year;
+        this.genre = genre;
     }
 
     @Override
