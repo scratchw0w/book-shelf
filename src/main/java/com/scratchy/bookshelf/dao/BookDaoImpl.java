@@ -1,5 +1,6 @@
 package com.scratchy.bookshelf.dao;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -40,6 +41,16 @@ public class BookDaoImpl implements BookDao {
     @Override
     public void add(Book newBook) {
         dataBase.insert(Objects.requireNonNull(newBook), "library");
+    }
+
+    @Override
+    public void addAll(Collection<Book> bookCollection) {
+        if (bookCollection.isEmpty())
+            return;
+        
+        for (Book newBook : bookCollection) {
+            dataBase.insert(newBook, "library");
+        }
     }
 
     @Override

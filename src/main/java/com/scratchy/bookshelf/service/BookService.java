@@ -1,5 +1,6 @@
 package com.scratchy.bookshelf.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.scratchy.bookshelf.model.Book;
@@ -14,6 +15,8 @@ public interface BookService {
     List<Book> getAll(Genres genre);
 
     void add(Book newBook);
+
+    void addAll(Collection<Book> bookCollection);
 
     Book delete(String title, int year);
     

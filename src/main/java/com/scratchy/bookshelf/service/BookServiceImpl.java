@@ -1,5 +1,6 @@
 package com.scratchy.bookshelf.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.scratchy.bookshelf.dao.BookDao;
@@ -14,36 +15,42 @@ import org.springframework.transaction.annotation.Transactional;
 public class BookServiceImpl implements BookService {
 
     @Autowired
-    private BookDao dataBase;
+    private BookDao bookDao;
 
     @Override
     @Transactional
     public Book getOne(String title) {
-        return dataBase.getOne(title);
+        return bookDao.getOne(title);
     }
 
     @Override
     @Transactional
     public List<Book> getAll() {
-        return dataBase.getAll();
+        return bookDao.getAll();
     }
 
     @Override
     @Transactional
     public List<Book> getAll(Genres genre) {
-        return dataBase.getAll(genre);
+        return bookDao.getAll(genre);
     }
 
     @Override
     @Transactional
     public void add(Book newBook) {
-        dataBase.add(newBook);
+        bookDao.add(newBook);
+    }
+
+    @Override
+    @Transactional
+    public void addAll(Collection<Book> bookCollection) {
+        bookDao.addAll(bookCollection);
     }
 
     @Override
     @Transactional
     public Book delete(String title, int year) {
-        return dataBase.delete(title, year);
+        return bookDao.delete(title, year);
     }
     
 }
