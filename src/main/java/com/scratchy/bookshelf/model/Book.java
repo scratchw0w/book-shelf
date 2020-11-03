@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import lombok.Data;
 
 @Data
-@Document(collection = "books")
+@Document(collection = "library")
 public class Book {
  
     @Id
@@ -40,7 +40,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "book: " + title + ", " + author + ", " + year;
+        return "book: " + title + ", " + author + ", " + year + ", " + genre + "\n";
     }
 
 }

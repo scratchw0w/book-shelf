@@ -9,9 +9,9 @@ public interface BookService {
 
     Book getOne(String title);
 
-    List<Book> getMany();
+    List<Book> getAll();
 
-    List<Book> getMany(Genres genre);
+    List<Book> getAll(Genres genre);
 
     void add(Book newBook);
 

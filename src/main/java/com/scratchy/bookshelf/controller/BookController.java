@@ -1,7 +1,5 @@
 package com.scratchy.bookshelf.controller;
 
-import com.scratchy.bookshelf.model.Book;
-import com.scratchy.bookshelf.model.Genres;
 import com.scratchy.bookshelf.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BookController {
 
     @Autowired
-    BookService bookManager;
- 
+    private BookService bookLibrary;
+
     @GetMapping("/")
     public String mainPage() {
-        // ?? 
-        System.out.println(bookManager.getMany());
-        System.out.println(bookManager.getOne("Vikings"));
         return "main-page";
     }
 

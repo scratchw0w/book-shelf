@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class BookServiceImpl implements BookService {
 
     @Autowired
-    BookDao dataBase;
+    private BookDao dataBase;
 
     @Override
     @Transactional
@@ -24,14 +24,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public List<Book> getMany() {
-        return dataBase.getMany();
+    public List<Book> getAll() {
+        return dataBase.getAll();
     }
 
     @Override
     @Transactional
-    public List<Book> getMany(Genres genre) {
-        return getMany(genre);
+    public List<Book> getAll(Genres genre) {
+        return dataBase.getAll(genre);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.scratchy.bookshelf.dao;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.scratchy.bookshelf.model.Book;
 import com.scratchy.bookshelf.model.Genres;
@@ -17,31 +19,47 @@ public class BookDaoImpl implements BookDao {
     @Autowired
     private MongoTemplate dataBase;
 
-
-    // TODO format title!
     @Override
     public Book getOne(String title) {
-        return dataBase.findOne(Query.query(Criteria.where("title").is(title)), Book.class);
+        Book book = dataBase.findOne(Query.query(Criteria.where("title").is(title)), Book.class);
+
+        if (book == null)
+            throw new IllegalStateException("No book find with such parameters: title: " + title);
+            
+        return book;
     }
 
     @Override
-    public List<Book> getMany() {
-        return dataBase.findAll(Book.class);
+    public List<Book> getAll() {
+        List<Book> books = dataBase.findAll(Book.class);
+        if (books.isEmpty())
+            return Collections.emptyList();
+        return books;
     }
 
     @Override
     public void add(Book newBook) {
-        dataBase.insert(newBook, "library");
+        dataBase.insert(Objects.requireNonNull(newBook), "library");
     }
 
     @Override
     public Book delete(String title, int year) {
-        // TODO Auto-generated method stub
-        return null;
+        Book deletedBook = dataBase.findOne(
+            Query.query(Criteria.where("title").is(title).and("year").is(year)),
+            Book.class);
+
+        if(deletedBook == null)
+            throw new IllegalArgumentException(
+                "\nNo book find with such parameters: title: " +
+                title + " and year: " + year);
+
+        dataBase.remove(deletedBook);
+        return deletedBook;
     }
 
     @Override
-    public List<Book> getMany(Genres genre) {
+    public List<Book> getAll(Genres genre) {
+
         switch(genre) {
             case ACTION:
                 return getBooksByGenre(Genres.ACTION);
@@ -65,7 +83,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     private List<Book> getBooksByGenre(Genres genre) {
-        return dataBase.find(Query.query(Criteria.where("genre").is(genre.name())), Book.class);
+        return dataBase.find(Query.query(Criteria.where("genre").is(genre)), Book.class);
     }
     
 }
