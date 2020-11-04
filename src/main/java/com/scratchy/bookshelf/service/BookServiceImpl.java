@@ -31,6 +31,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
+    public List<Book> getAll(String author) {
+        return bookDao.getAll(author);
+    }
+
+    @Override
+    @Transactional
     public List<Book> getAll(Genres genre) {
         return bookDao.getAll(genre);
     }

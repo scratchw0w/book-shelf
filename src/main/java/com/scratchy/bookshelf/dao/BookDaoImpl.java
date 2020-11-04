@@ -38,6 +38,17 @@ public class BookDaoImpl implements BookDao {
         return books;
     }
 
+
+    @Override
+    public List<Book> getAll(String author) {
+        List<Book> books = dataBase.find(Query.query(Criteria.where("author").is(author)), Book.class);
+        
+        if(books.isEmpty())
+            return Collections.emptyList();
+
+        return books;
+    }
+
     @Override
     public void add(Book newBook) {
         dataBase.insert(Objects.requireNonNull(newBook), "library");
