@@ -1,10 +1,16 @@
 package com.scratchy.bookshelf.controller;
 
+import java.util.List;
+
+import com.scratchy.bookshelf.model.Book;
+import com.scratchy.bookshelf.model.Genres;
 import com.scratchy.bookshelf.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class BookController {
@@ -13,7 +19,17 @@ public class BookController {
     private BookService bookLibrary;
 
     @GetMapping("/")
-    public String mainPage() {
+    public String mainPage(Model theModel) {
+        List<Book> allBooks = bookLibrary.getAll();
+        theModel.addAttribute("books", allBooks);
+        return "main-page";
+    }
+
+    @GetMapping("/{genre}")
+    public String filmByGenrePage(@PathVariable("genre") String genreString, Model theModel) {
+        Genres genre = Genres.valueOf(genreString.toUpperCase());
+        List<Book> selectedBooks = bookLibrary.getAll(genre);
+        theModel.addAttribute("books", selectedBooks);
         return "main-page";
     }
 
