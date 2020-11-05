@@ -20,7 +20,6 @@ public class BookController {
     public String mainPage(Model theModel) {
         List<Book> allBooks = bookLibrary.getAll();
         theModel.addAttribute("books", allBooks);
-        System.out.println(bookLibrary.getAll("Konan Doyl"));
         return "main-page";
     }
 
