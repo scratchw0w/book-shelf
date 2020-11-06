@@ -33,6 +33,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> getAll() {
         List<Book> books = dataBase.findAll(Book.class);
+
         if (books.isEmpty())
             return Collections.emptyList();
         return books;

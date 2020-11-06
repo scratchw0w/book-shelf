@@ -6,10 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookShelf</title>
+    <link rel="stylesheet" href="styles/main-page-style.css">
   </head>
 
   <body>
-    Welcome to BookShelf.
+    <h1 id = "top-label">Book Shelf</h1>
+    <hr id = "top-line">
     <div>
 
       <table>
