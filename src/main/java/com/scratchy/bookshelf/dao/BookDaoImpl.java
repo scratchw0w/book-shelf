@@ -40,6 +40,13 @@ public class BookDaoImpl implements BookDao {
     }
 
 
+    // TODO:
+    @Override
+    public List<Book> getAllByTitleOrAuthor(String bookMarker) {
+        return List.of(new Book("Done", "Done", 2020, Genres.CLASSIC));
+    }
+    
+
     @Override
     public List<Book> getAll(String author) {
         List<Book> books = dataBase.find(Query.query(Criteria.where("author").is(author)), Book.class);
@@ -108,5 +115,5 @@ public class BookDaoImpl implements BookDao {
     private List<Book> getBooksByGenre(Genres genre) {
         return dataBase.find(Query.query(Criteria.where("genre").is(genre)), Book.class);
     }
-    
+
 }

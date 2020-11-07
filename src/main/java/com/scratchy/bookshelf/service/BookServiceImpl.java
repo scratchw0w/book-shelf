@@ -31,6 +31,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
+    public List<Book> getAllByTitleOrAuthor(String bookMarker) {
+        return bookDao.getAllByTitleOrAuthor(bookMarker);
+    }
+
+    @Override
+    @Transactional
     public List<Book> getAll(String author) {
         return bookDao.getAll(author);
     }
@@ -58,5 +64,5 @@ public class BookServiceImpl implements BookService {
     public Book delete(String title, int year) {
         return bookDao.delete(title, year);
     }
-    
+   
 }
