@@ -1,5 +1,6 @@
 package com.scratchy.bookshelf.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -36,22 +37,10 @@ public class BookDaoImpl implements BookDao {
 
         if (books.isEmpty())
             return Collections.emptyList();
+
         return books;
     }
-
-
-    @Override
-    public List<Book> getAllByTitleOrAuthor(String bookMarker) {
-        List<Book> detectedBooks;
-        detectedBooks = dataBase.find(Query.query(Criteria.where("title").is(bookMarker)), Book.class);
-        if(detectedBooks.isEmpty())
-            detectedBooks = dataBase.find(Query.query(Criteria.where("author").is(bookMarker)), Book.class);
-        if(detectedBooks.isEmpty())
-            throw new IllegalStateException("Illegal argument bookMarker: " + bookMarker);
-        return detectedBooks;
-    }
     
-
     @Override
     public List<Book> getAll(String author) {
         List<Book> books = dataBase.find(Query.query(Criteria.where("author").is(author)), Book.class);
@@ -121,4 +110,30 @@ public class BookDaoImpl implements BookDao {
         return dataBase.find(Query.query(Criteria.where("genre").is(genre)), Book.class);
     }
 
+    @Override
+    public List<Book> getAllByTitleOrAuthor(String bookMarker) {
+        return getDetectedBookList(bookMarker);
+    }
+
+    private List<Book> getDetectedBookList(String bookTitleOrAuthor) {
+        List<Book> detectedBooks = new ArrayList<>();
+
+        detectedBooks = getDetectedBookListWithFlag(bookTitleOrAuthor, true);
+        if(detectedBooks.isEmpty())
+            return detectedBooks = getDetectedBookListWithFlag(bookTitleOrAuthor, false);
+        if(detectedBooks.isEmpty())
+            return Collections.emptyList();
+        return detectedBooks;
+    }
+
+    private List<Book> getDetectedBookListWithFlag(String bookTitleOrAuthor, boolean isTitle) {
+        List<Book> detectedBooks = new ArrayList<>();
+        
+        if(isTitle) {
+            detectedBooks = dataBase.find(Query.query(Criteria.where("title").is(bookTitleOrAuthor)), Book.class);
+        } else {
+            detectedBooks = dataBase.find(Query.query(Criteria.where("author").is(bookTitleOrAuthor)), Book.class);
+        }
+        return detectedBooks;
+    }
 }
