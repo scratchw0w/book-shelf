@@ -9,11 +9,11 @@ import com.scratchy.bookshelf.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BookController {
@@ -22,37 +22,39 @@ public class BookController {
     private BookService bookLibrary;
 
     @GetMapping("/")
-    public String mainPage(Model theModel) {
+    public ModelAndView mainPage() {
         List<Book> allBooks = bookLibrary.getAll();
-        theModel.addAttribute("books", allBooks);
-        return "main-page";
+        ModelAndView modelView = new ModelAndView("main-page");
+        modelView.addObject("books", allBooks);
+        return modelView;
     }
 
     @PostMapping("/")
-    public String searcher(@ModelAttribute(name = "bookParams") String bookTitleOrAuthor, Model theModel) {
+    public ModelAndView searcher(@ModelAttribute(name = "bookParams") String bookTitleOrAuthor) {
         List<Book> detectedBooks = bookLibrary.getAllByTitleOrAuthor(bookTitleOrAuthor);
-        theModel.addAttribute("books", detectedBooks);
-        return "main-page";
+        ModelAndView modelView = new ModelAndView("main-page");
+        modelView.addObject("books", detectedBooks);
+        return modelView;
     }
 
     @GetMapping("/filter")
-    public String mainPageAfterSorting(@RequestParam(required = false) List<String> genreType, Model theModel) {
+    public ModelAndView mainPageAfterSorting(@RequestParam(required = false) List<String> genreType) {
         List<Book> selectedBooks = new ArrayList<>();
+        ModelAndView modelView = new ModelAndView("main-page");
 
         if(genreType == null) {
             selectedBooks = bookLibrary.getAll();
-            theModel.addAttribute("books", selectedBooks);
-            return "main-page";
+            modelView.addObject("books", selectedBooks);
+            return modelView;
         }
-
         Genres choosedGenre;
         for(String genre : genreType) {
             choosedGenre = Genres.valueOf(genre);
             selectedBooks.addAll(bookLibrary.getAll(choosedGenre));
         }
         
-        theModel.addAttribute("books", selectedBooks);
-        return "main-page";
+        modelView.addObject("books", selectedBooks);
+        return modelView;
     }
 
 }
