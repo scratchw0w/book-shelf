@@ -40,10 +40,15 @@ public class BookDaoImpl implements BookDao {
     }
 
 
-    // TODO:
     @Override
     public List<Book> getAllByTitleOrAuthor(String bookMarker) {
-        return List.of(new Book("Done", "Done", 2020, Genres.CLASSIC));
+        List<Book> detectedBooks;
+        detectedBooks = dataBase.find(Query.query(Criteria.where("title").is(bookMarker)), Book.class);
+        if(detectedBooks.isEmpty())
+            detectedBooks = dataBase.find(Query.query(Criteria.where("author").is(bookMarker)), Book.class);
+        if(detectedBooks.isEmpty())
+            throw new IllegalStateException("Illegal argument bookMarker: " + bookMarker);
+        return detectedBooks;
     }
     
 

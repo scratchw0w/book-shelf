@@ -14,7 +14,7 @@
     
     <hr id = "top-line">
     
-    <form action="/search" method="POST">
+    <form action="/" method="POST">
       <input type="text" name="bookParams" >
       <input type="submit" value="Enter">
     </form>
@@ -39,15 +39,17 @@
       </table>
     </div>
 
-    <form action="" method="GET">
-      <input type="checkbox" >ACTION
-      <input type="checkbox">ADVENTURE
-      <input type="checkbox">CLASSIC
-      <input type="checkbox">COMEDY
-      <input type="checkbox">CRIME
-      <input type="checkbox">DRAMA
-      <input type="checkbox">HORROR
-      <input type="checkbox">POETRY
+    <form action="/filter" method="GET">
+      <input type="checkbox" name="genreType" value="ACTION" >ACTION
+      <input type="checkbox" name="genreType" value="ADVENTURE" >ADVENTURE
+      <input type="checkbox" name="genreType" value="CLASSIC" >CLASSIC
+      <input type="checkbox" name="genreType" value="COMEDY" >COMEDY
+      <input type="checkbox" name="genreType" value="CRIME" >CRIME
+      <input type="checkbox" name="genreType" value="DRAMA" >DRAMA
+      <input type="checkbox" name="genreType" value="HORROR" >HORROR
+      <input type="checkbox" name="genreType" value="POETRY" >POETRY
+      <input type="submit" value="Enter">
     </form>
+
   </body>
 </html>
