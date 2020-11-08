@@ -31,8 +31,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public List<Book> getAllByTitleOrAuthor(String bookMarker) {
-        return bookDao.getAllByTitleOrAuthor(bookMarker);
+    public List<Book> getBooksByFilter(String filter) {
+        return bookDao.getBooksByFilter(filter);
     }
 
     @Override

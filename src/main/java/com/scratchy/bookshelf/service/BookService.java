@@ -12,7 +12,7 @@ public interface BookService {
 
     List<Book> getAll();
 
-    List<Book> getAllByTitleOrAuthor(String bookMarker);
+    List<Book> getBooksByFilter(String filter);
 
     List<Book> getAll(String author);
 

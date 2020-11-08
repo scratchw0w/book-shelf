@@ -31,7 +31,7 @@ public class BookController {
 
     @PostMapping("/")
     public ModelAndView searcher(@ModelAttribute(name = "bookParams") String bookTitleOrAuthor) {
-        List<Book> detectedBooks = bookLibrary.getAllByTitleOrAuthor(bookTitleOrAuthor);
+        List<Book> detectedBooks = bookLibrary.getBooksByFilter(bookTitleOrAuthor);
         ModelAndView modelView = new ModelAndView("main-page");
         modelView.addObject("books", detectedBooks);
         return modelView;

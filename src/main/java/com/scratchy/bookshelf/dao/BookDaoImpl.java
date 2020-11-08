@@ -111,8 +111,8 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public List<Book> getAllByTitleOrAuthor(String bookMarker) {
-        return getDetectedBookList(bookMarker);
+    public List<Book> getBooksByFilter(String filter) {
+        return getDetectedBookList(filter);
     }
 
     private List<Book> getDetectedBookList(String bookTitleOrAuthor) {
