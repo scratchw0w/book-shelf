@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.List;
 
 import com.scratchy.bookshelf.model.Book;
-import com.scratchy.bookshelf.model.Genres;
 
 public interface BookService {
 
@@ -12,11 +11,11 @@ public interface BookService {
 
     List<Book> getAll();
 
+    List<Book> getAll(List<String> genreList);
+
     List<Book> getBooksByFilter(String filter);
 
     List<Book> getAll(String author);
-
-    List<Book> getAll(Genres genre);
 
     void add(Book newBook);
 

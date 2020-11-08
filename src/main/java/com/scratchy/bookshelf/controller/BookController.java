@@ -47,11 +47,8 @@ public class BookController {
             modelView.addObject("books", selectedBooks);
             return modelView;
         }
-        Genres choosedGenre;
-        for(String genre : genreType) {
-            choosedGenre = Genres.valueOf(genre);
-            selectedBooks.addAll(bookLibrary.getAll(choosedGenre));
-        }
+        
+        selectedBooks = bookLibrary.getAll(genreType);
         
         modelView.addObject("books", selectedBooks);
         return modelView;

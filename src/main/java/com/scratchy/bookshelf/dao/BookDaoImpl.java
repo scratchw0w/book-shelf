@@ -82,7 +82,20 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public List<Book> getAll(Genres genre) {
+    public List<Book> getAll(List<String> genreList) {
+        List<Book> detectedBooks = new ArrayList<>();
+        for(String genre : genreList) {
+            detectedBooks.addAll(
+                getAll(Genres.valueOf(genre)));
+        }
+
+        if(detectedBooks.isEmpty())
+            return List.of(Book.getUndefinedInstance("There are no books of this genre."));
+        
+        return detectedBooks;
+    }
+
+    private List<Book> getAll(Genres genre) {
 
         switch(genre) {
             case ACTION:
@@ -123,7 +136,7 @@ public class BookDaoImpl implements BookDao {
             detectedBooks = getDetectedBookListWithFlag(bookTitleOrAuthor, false);
         }
         if(detectedBooks.isEmpty()){
-            detectedBooks = List.of(Book.getUndefinedInstance("The book cannot be found."));
+            detectedBooks = List.of(Book.getUndefinedInstance("The book cannot be found. Try again."));
         }
         return detectedBooks;
     }

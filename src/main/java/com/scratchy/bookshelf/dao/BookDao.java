@@ -10,13 +10,13 @@ public interface BookDao {
     
     Book getOne(String title);
 
+    List<Book> getAll(List<String> genreList);
+
     List<Book> getAll();
 
     List<Book> getBooksByFilter(String filter);
 
     List<Book> getAll(String author);
-
-    List<Book> getAll(Genres genre);
 
     void add(Book newBook);
 
