@@ -119,10 +119,12 @@ public class BookDaoImpl implements BookDao {
         List<Book> detectedBooks = new ArrayList<>();
 
         detectedBooks = getDetectedBookListWithFlag(bookTitleOrAuthor, true);
-        if(detectedBooks.isEmpty())
-            return detectedBooks = getDetectedBookListWithFlag(bookTitleOrAuthor, false);
-        if(detectedBooks.isEmpty())
-            return Collections.emptyList();
+        if(detectedBooks.isEmpty()) {
+            detectedBooks = getDetectedBookListWithFlag(bookTitleOrAuthor, false);
+        }
+        if(detectedBooks.isEmpty()){
+            detectedBooks = List.of(Book.getUndefinedInstance("The book cannot be found."));
+        }
         return detectedBooks;
     }
 
@@ -130,9 +132,11 @@ public class BookDaoImpl implements BookDao {
         List<Book> detectedBooks = new ArrayList<>();
         
         if(isTitle) {
-            detectedBooks = dataBase.find(Query.query(Criteria.where("title").is(bookTitleOrAuthor)), Book.class);
+            detectedBooks = 
+                dataBase.find(Query.query(Criteria.where("title").is(bookTitleOrAuthor)), Book.class);
         } else {
-            detectedBooks = dataBase.find(Query.query(Criteria.where("author").is(bookTitleOrAuthor)), Book.class);
+            detectedBooks =
+                dataBase.find(Query.query(Criteria.where("author").is(bookTitleOrAuthor)), Book.class);
         }
         return detectedBooks;
     }

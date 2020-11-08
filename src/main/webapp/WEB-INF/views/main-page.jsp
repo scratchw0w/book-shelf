@@ -10,13 +10,12 @@
   </head>
 
   <body>
-    <h1 id = "top-label">Book Shelf</h1>
     
+    <h1 id = "top-label">Book Shelf</h1>
     <hr id = "top-line">
     
     <form action="/" method="POST">
       <input type="text" name="bookParams" >
-      <input type="submit" value="Enter">
     </form>
 
     <div>
@@ -36,6 +35,7 @@
             <td>${books.genre}</td>
           </tr>
         </c:forEach>
+        
       </table>
     </div>
 

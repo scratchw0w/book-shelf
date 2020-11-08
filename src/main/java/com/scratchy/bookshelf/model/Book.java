@@ -22,7 +22,7 @@ public class Book {
     private String author;
     
     @Field(value = "year")
-    private int year;
+    private Integer year;
 
     @Field(value = "genre")
     private Genres genre;
@@ -35,7 +35,15 @@ public class Book {
         if(Objects.requireNonNull(year) > 2020) 
             throw new IllegalArgumentException(year + " is greater than 2020");
         this.year = year;
-        this.genre = genre;
+        this.genre = Objects.requireNonNull(genre);
+    }
+
+    private Book(String message) {
+        this.title = message;
+    }
+
+    public static Book getUndefinedInstance(String message) {
+        return new Book(message);
     }
 
     @Override
