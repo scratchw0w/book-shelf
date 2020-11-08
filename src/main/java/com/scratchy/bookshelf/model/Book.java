@@ -39,7 +39,7 @@ public class Book {
     }
 
     private Book(String message) {
-        this.title = message;
+        this.title = Objects.requireNonNull(message);
     }
 
     public static Book getUndefinedInstance(String message) {
