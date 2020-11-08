@@ -1,11 +1,11 @@
 package com.scratchy.bookshelf.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import com.scratchy.bookshelf.dao.BookDao;
 import com.scratchy.bookshelf.model.Book;
-import com.scratchy.bookshelf.model.Genres;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +44,18 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public List<Book> getAll(List<String> genreList) {
-        return bookDao.getAll(genreList);
+        List<Book> selectedBooks = new ArrayList<>();
+
+        if(noGenresChosen(genreList)) {
+            selectedBooks = bookDao.getAll();
+        } else {
+            selectedBooks = bookDao.getAll(genreList);
+        }
+        return selectedBooks;
+    }
+
+    private boolean noGenresChosen(List<String> genreList) {
+        return genreList == null;
     }
 
     @Override

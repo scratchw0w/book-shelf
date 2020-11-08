@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.List;
 
 import com.scratchy.bookshelf.model.Book;
-import com.scratchy.bookshelf.model.Genres;
 
 public interface BookDao {
     

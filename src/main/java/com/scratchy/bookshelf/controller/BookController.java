@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.scratchy.bookshelf.model.Book;
-import com.scratchy.bookshelf.model.Genres;
 import com.scratchy.bookshelf.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,17 +38,8 @@ public class BookController {
 
     @GetMapping("/filter")
     public ModelAndView mainPageAfterSorting(@RequestParam(required = false) List<String> genreType) {
-        List<Book> selectedBooks = new ArrayList<>();
         ModelAndView modelView = new ModelAndView("main-page");
-
-        if(genreType == null) {
-            selectedBooks = bookLibrary.getAll();
-            modelView.addObject("books", selectedBooks);
-            return modelView;
-        }
-        
-        selectedBooks = bookLibrary.getAll(genreType);
-        
+        List<Book> selectedBooks = bookLibrary.getAll(genreType);
         modelView.addObject("books", selectedBooks);
         return modelView;
     }
