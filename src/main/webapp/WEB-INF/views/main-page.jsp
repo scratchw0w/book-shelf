@@ -17,7 +17,7 @@
     </div>
     <div class="search-section">
       <form action="/" method="POST">
-        <input type="text" name="bookParams" id="search-field">
+        <input type="text" name="bookParams" id="search-field" placeholder="Title or Author..">
         <input type="submit" id="search-btn" value="Find">
       </form>
     </div>
@@ -35,25 +35,33 @@
       </form>
     </div>
 
-    <div class="table-section">
-      <table>
-        <thead>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Year</th>
-          <th>Genre</th>
-        </thead>
+    <div class="book-section-wrapper">
+      <c:forEach var="books" items="${books}">
+        <div class="book-section">
+          <table id="book-table">
+            <thead id = "table-head">
+              <th>Title</th>
+              <th>Author</th>
+            </thead>
+            <tr>
+              <td>${books.title}</td>
+              <td>${books.author}</td>
+            </tr>
+            <thead id = "table-head">
+              <th>Year</th>
+              <th>Genre</th>
+            </thead>
+            <tr>
+              <td>${books.year}</td>
+              <td>${books.genre}</td>
+            </tr>
+          </table>
+        </div>
+      </c:forEach>
+    </div>
 
-        <c:forEach var="books" items="${books}">
-          <tr>
-            <td>${books.title}</td>
-            <td>${books.author}</td>
-            <td>${books.year}</td>
-            <td>${books.genre}</td>
-          </tr>
-        </c:forEach>
-        
-      </table>
+    <div>
+      <a href="https://github.com/scratchw0w/book-shelf" id="author-id">@scratchy</a>
     </div>
   </body>
 </html>
