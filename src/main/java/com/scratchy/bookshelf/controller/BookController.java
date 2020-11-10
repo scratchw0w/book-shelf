@@ -1,6 +1,5 @@
 package com.scratchy.bookshelf.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.scratchy.bookshelf.model.Book;

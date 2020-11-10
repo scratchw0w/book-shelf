@@ -31,7 +31,20 @@ body {
 
 /* ----------------- MAIN SECTION STARTED ----------------- */
 
+#find-field {
+    float: rigth;
+    width: 20%;
+}
 
+.filter-section {
+    padding-top: 15px;
+    float: left;
+    width: 20%;
+}
+
+.table-section {
+    
+}
 
 /* ----------------- MAIN SECTION ENDED ----------------- */
 

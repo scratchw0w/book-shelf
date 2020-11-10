@@ -14,11 +14,26 @@
     <h1 id = "top-label">Book Shelf</h1>
     <hr id = "top-line">
     
-    <form action="/" method="POST">
-      <input type="text" name="bookParams" >
-    </form>
+    <div class="">
+      <form action="/" method="POST">
+        <input type="text" name="bookParams" id="find-field">
+      </form>
+    </div>
+    <div class="filter-section">
+      <form action="/filter" method="GET">
+        <input type="checkbox" name="genreType" value="ACTION" >ACTION<br>
+        <input type="checkbox" name="genreType" value="ADVENTURE" >ADVENTURE<br>
+        <input type="checkbox" name="genreType" value="CLASSIC" >CLASSIC <br>
+        <input type="checkbox" name="genreType" value="COMEDY" >COMEDY<br>
+        <input type="checkbox" name="genreType" value="CRIME" >CRIME<br>
+        <input type="checkbox" name="genreType" value="DRAMA" >DRAMA<br>
+        <input type="checkbox" name="genreType" value="HORROR" >HORROR<br>
+        <input type="checkbox" name="genreType" value="POETRY" >POETRY<br>
+        <input type="submit" value="Enter">
+      </form>
+    </div>
 
-    <div>
+    <div class="table-section">
       <table>
         <thead>
           <th>Title</th>
@@ -38,18 +53,5 @@
         
       </table>
     </div>
-
-    <form action="/filter" method="GET">
-      <input type="checkbox" name="genreType" value="ACTION" >ACTION
-      <input type="checkbox" name="genreType" value="ADVENTURE" >ADVENTURE
-      <input type="checkbox" name="genreType" value="CLASSIC" >CLASSIC
-      <input type="checkbox" name="genreType" value="COMEDY" >COMEDY
-      <input type="checkbox" name="genreType" value="CRIME" >CRIME
-      <input type="checkbox" name="genreType" value="DRAMA" >DRAMA
-      <input type="checkbox" name="genreType" value="HORROR" >HORROR
-      <input type="checkbox" name="genreType" value="POETRY" >POETRY
-      <input type="submit" value="Enter">
-    </form>
-
   </body>
 </html>
