@@ -11,19 +11,24 @@ body {
     background-color: #FFEAA1;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* ----------------- PROJECT SETTINGS SECTION ENDED ----------------- */
 
 /* ----------------- TOP SECTION STARTED ----------------- */
 
-.top-label {
+#top-label {
+    text-align: center;
     font-family: 'Sansita Swashed', cursive;
-    margin-top: 15px;
-    margin-bottom: 23px;
+    margin-top: 5px;
+    margin-bottom: 0;
     color: #7C3705;
     cursor: pointer;
 }
 
-.top-line {
+#top-line {
     color: #7C3705;
 }
 
@@ -31,9 +36,24 @@ body {
 
 /* ----------------- MAIN SECTION STARTED ----------------- */
 
-#find-field {
-    float: rigth;
-    width: 20%;
+.search-section {
+
+}
+
+#search-field {
+    text-align: left;
+    width: 150px;
+}
+
+#search-btn {
+    color: #0f221c;
+    text-decoration: none;
+    background-color: #FFDEAD;
+    outline: none;
+}
+
+#search-btn:hover {
+    cursor: pointer;
 }
 
 .filter-section {
@@ -42,8 +62,10 @@ body {
     width: 20%;
 }
 
-.table-section {
-    
+#filter-btn {
+    color: #0f221c;
+    text-decoration: none;
+    outline: none;
 }
 
 /* ----------------- MAIN SECTION ENDED ----------------- */

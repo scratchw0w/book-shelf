@@ -11,12 +11,14 @@
 
   <body>
     
-    <h1 id = "top-label">Book Shelf</h1>
-    <hr id = "top-line">
-    
-    <div class="">
+    <div class="top-section">
+      <a href="/"><h1 id="top-label">Book Shelf</h1></a>
+      <hr id = "top-line">
+    </div>
+    <div class="search-section">
       <form action="/" method="POST">
-        <input type="text" name="bookParams" id="find-field">
+        <input type="text" name="bookParams" id="search-field">
+        <input type="submit" id="search-btn" value="Find">
       </form>
     </div>
     <div class="filter-section">
@@ -29,7 +31,7 @@
         <input type="checkbox" name="genreType" value="DRAMA" >DRAMA<br>
         <input type="checkbox" name="genreType" value="HORROR" >HORROR<br>
         <input type="checkbox" name="genreType" value="POETRY" >POETRY<br>
-        <input type="submit" value="Enter">
+        <input type="submit" id="filter-btn" value="Enter">
       </form>
     </div>
 
