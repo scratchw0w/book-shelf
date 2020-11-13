@@ -110,6 +110,7 @@ a {
 }
 
 #delete-btn {
+    visibility: none;
 }
 
 /* ----------------- MAIN SECTION ENDED ----------------- */

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookShelf</title>
     <link rel="stylesheet" href="styles/main-page-style.css">
+    <script src="scripts/delete-section.js"></script>
   </head>
 
   <body>
@@ -37,18 +38,23 @@
 
     <div class="book-section-wrapper">
       <c:forEach var="books" items="${books}">
+        <c:url var="deleteLink" value="/delete">
+              <c:param name="book" value="${books}" />
+        </c:url>
+
         <div class="book-section">
           <table id="book-table">
+            
             <thead id = "table-head">
               <th>Title</th>
               <th>Author</th>
+              <td id="delete-btn"><a href="${deleteLink}">Delete</a></td>
             </thead>
             <tr>
               <td>${books.title}</td>
               <td>${books.author}</td>
             </tr>
             <thead id = "table-head">
-              <input type="button" id="delete-btn" value="Delete">
               <th>Year</th>
               <th>Genre</th>
             </thead>
@@ -56,13 +62,15 @@
               <td>${books.year}</td>
               <td>${books.genre}</td>
             </tr>
+            
+            
           </table>
         </div>
       </c:forEach>
     </div>
     <div class="control-section">
       <a href="/constructor" id="add-link">Add New Book</a>
-      <a id="delete-link">Delete Existing Book</a>
+      <button id="delete-link" onclick="enableDeleteSection()">Delete Existing Book</button>
     </div>
 
     <div>

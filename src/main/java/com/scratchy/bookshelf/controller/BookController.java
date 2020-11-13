@@ -43,6 +43,12 @@ public class BookController {
         return modelView;
     }
 
+    @GetMapping("/delete")
+    public String saveBook(@ModelAttribute("book") Book theBook) {
+        bookLibrary.delete(theBook.getTitle(), theBook.getYear());
+        return "redirect:/";
+    }
+
     @GetMapping("/constructor")
     public ModelAndView constructorPage(){
         ModelAndView modelView = new ModelAndView("construct-page");
