@@ -48,6 +48,7 @@
               <td>${books.author}</td>
             </tr>
             <thead id = "table-head">
+              <input type="button" id="delete-btn" value="Delete">
               <th>Year</th>
               <th>Genre</th>
             </thead>
@@ -58,6 +59,10 @@
           </table>
         </div>
       </c:forEach>
+    </div>
+    <div class="control-section">
+      <a href="/constructor" id="add-link">Add New Book</a>
+      <a id="delete-link">Delete Existing Book</a>
     </div>
 
     <div>

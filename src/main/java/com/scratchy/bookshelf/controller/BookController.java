@@ -43,4 +43,16 @@ public class BookController {
         return modelView;
     }
 
+    @GetMapping("/constructor")
+    public ModelAndView constructorPage(){
+        ModelAndView modelView = new ModelAndView("construct-page");
+        modelView.addObject("book", new Book());
+        return modelView;
+    }
+
+    @PostMapping("/constructor")
+    public String savingPage(@ModelAttribute("book") Book theBook){
+        bookLibrary.add(theBook);
+        return "redirect:/";
+    }
 }
