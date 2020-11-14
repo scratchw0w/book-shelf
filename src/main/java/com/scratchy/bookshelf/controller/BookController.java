@@ -44,8 +44,9 @@ public class BookController {
     }
 
     @GetMapping("/delete")
-    public String saveBook(@ModelAttribute("book") Book theBook) {
-        bookLibrary.delete(theBook.getTitle(), theBook.getYear());
+    public String saveBook(@ModelAttribute("title") String bookTitle, @ModelAttribute("year") String bookYear ) {
+        System.out.println("Title: " + bookTitle + ", year: " + bookYear);
+        bookLibrary.delete(bookTitle, Integer.parseInt(bookYear));
         return "redirect:/";
     }
 

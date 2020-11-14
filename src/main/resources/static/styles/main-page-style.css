@@ -109,8 +109,16 @@ a {
     cursor: pointer;
 }
 
+#delete-link {
+    color: #A52A2A;
+}
+
+#delete-link:hover {
+    cursor: pointer;
+}
+
 #delete-btn {
-    visibility: none;
+    display: none;
 }
 
 /* ----------------- MAIN SECTION ENDED ----------------- */

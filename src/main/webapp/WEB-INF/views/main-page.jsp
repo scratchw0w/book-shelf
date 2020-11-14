@@ -39,7 +39,8 @@
     <div class="book-section-wrapper">
       <c:forEach var="books" items="${books}">
         <c:url var="deleteLink" value="/delete">
-              <c:param name="book" value="${books}" />
+              <c:param name="title" value="${books.title}" />
+              <c:param name="year" value="${books.year}" />
         </c:url>
 
         <div class="book-section">
@@ -70,7 +71,7 @@
     </div>
     <div class="control-section">
       <a href="/constructor" id="add-link">Add New Book</a>
-      <button id="delete-link" onclick="enableDeleteSection()">Delete Existing Book</button>
+      <a id="delete-link" onclick="enableDeleteSection()">Delete Existing Book</a>
     </div>
 
     <div>
