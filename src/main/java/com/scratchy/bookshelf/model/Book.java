@@ -33,7 +33,7 @@ public class Book {
     
     @NotNull(message = "*")
     @Min(value = -4000, message = "Invalid year")
-    @Max(2020)
+    @Max(value = 2020, message="Invalid year")
     @Field(value = "year")
     private Integer year;
 
