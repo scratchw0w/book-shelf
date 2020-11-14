@@ -2,11 +2,14 @@ package com.scratchy.bookshelf.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.scratchy.bookshelf.model.Book;
 import com.scratchy.bookshelf.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,8 +61,13 @@ public class BookController {
     }
 
     @PostMapping("/constructor")
-    public String savingPage(@ModelAttribute("book") Book theBook){
-        bookLibrary.add(theBook);
-        return "redirect:/";
+    public String savingPage(@Valid @ModelAttribute("book") Book theBook,
+            BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "construct-page";
+        } else {
+            bookLibrary.add(theBook);
+            return "redirect:/";
+        }
     }
 }

@@ -9,21 +9,45 @@
 </head>
 <body>
     <h1>Construct Page</h1>
+
     <form:form action="/constructor" modelAttribute="book" method="POST">
-    <form:input path="title" placeholder="Enter title" id="text-input" />
-    <form:input path="author" placeholder="Enter author" id="text-input" />
-    <form:input path="year" placeholder="Enter year" id="text-input" />
-    <form:select path="genre">
-        <form:option value="ACTION" />
-        <form:option value="ADVENTURE" />
-        <form:option value="CLASSIC" />
-        <form:option value="COMEDY" />
-        <form:option value="CRIME" />
-        <form:option value="DRAMA" />
-        <form:option value="HORROR" />
-        <form:option value="POETRY" />
-    </form:select>
-    <input type="submit" value="Save" />
+      <table>
+        <tr>
+          <td>
+            <form:input path="title" placeholder="Enter title" id="text-input" />
+          </td>
+          <td>
+            <form:errors path="title" cssClass="error" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <form:input path="author" placeholder="Enter author" id="text-input" />
+          </td>
+          <td>
+            <form:errors path="author" cssClass="error" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <form:input path="year" placeholder="Enter year" id="text-input" />
+          </td>
+          <td>
+            <form:errors path="year" cssClass="error" />
+          </td>
+        </tr>
+        <form:select path="genre">
+            <form:option value="ACTION" />
+            <form:option value="ADVENTURE" />
+            <form:option value="CLASSIC" />
+            <form:option value="COMEDY" />
+            <form:option value="CRIME" />
+            <form:option value="DRAMA" />
+            <form:option value="HORROR" />
+            <form:option value="POETRY" />
+        </form:select>
+        <input type="submit" value="Save" />
+      </table>
     </form:form>
 </body>
 </html>
