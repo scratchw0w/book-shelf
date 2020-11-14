@@ -1,0 +1,40 @@
+/* ----------------- PROJECT SETTINGS SECTION STARTED ----------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    
+}
+
+body {
+    font-family: 'Sansita Swashed', cursive;
+    background-color: #FFEAA1;
+}
+
+a {
+    color: #A52A2A;
+    text-decoration: none;
+}
+
+.err-message {
+    color: #A52A2A;
+}
+
+/* ----------------- PROJECT SETTINGS SECTION ENDED ----------------- */
+
+/* ----------------- TOP SECTION STARTED ----------------- */
+
+
+/* ----------------- TOP SECTION ENDED ----------------- */
+
+/* ----------------- MAIN SECTION STARTED ----------------- */
+
+
+/* ----------------- MAIN SECTION ENDED ----------------- */
+
+/* ----------------- BOTTOM SECTION STARTED ----------------- */
+
+
+/* ----------------- BOTTOM SECTION ENDED ----------------- */

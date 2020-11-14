@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/constructor-style.css">
     <title>Construct Page</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
             <form:input path="title" placeholder="Enter title" id="text-input" />
           </td>
           <td>
-            <form:errors path="title" cssClass="error" />
+            <form:errors path="title" cssClass="err-message" />
           </td>
         </tr>
         <tr>
@@ -25,7 +26,7 @@
             <form:input path="author" placeholder="Enter author" id="text-input" />
           </td>
           <td>
-            <form:errors path="author" cssClass="error" />
+            <form:errors path="author" cssClass="err-message" />
           </td>
         </tr>
         <tr>
@@ -33,7 +34,7 @@
             <form:input path="year" placeholder="Enter year" id="text-input" />
           </td>
           <td>
-            <form:errors path="year" cssClass="error" />
+            <form:errors path="year" cssClass="err-message" />
           </td>
         </tr>
         <form:select path="genre">
