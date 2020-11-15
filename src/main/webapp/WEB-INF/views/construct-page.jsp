@@ -9,7 +9,7 @@
     <title>Construct Page</title>
 </head>
 <body>
-    <h1>Construct Page</h1>
+    <h1>Construction Page</h1>
 
     <form:form action="/constructor" modelAttribute="book" method="POST">
       <table>
