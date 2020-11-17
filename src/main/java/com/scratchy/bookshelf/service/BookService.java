@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.scratchy.bookshelf.model.Book;
 
+import org.springframework.validation.BindingResult;
+
 public interface BookService {
 
     Book getOne(String title);
@@ -17,7 +19,7 @@ public interface BookService {
 
     List<Book> getAll(String author);
 
-    void add(Book newBook);
+    String add(Book newBook, BindingResult bindingResult);
 
     void addAll(Collection<Book> bookCollection);
 

@@ -47,7 +47,8 @@ public class BookController {
     }
 
     @GetMapping("/delete")
-    public String saveBook(@ModelAttribute("title") String bookTitle, @ModelAttribute("year") String bookYear) {
+    public String saveBook(@ModelAttribute("title") String bookTitle,
+            @ModelAttribute("year") String bookYear) {
         bookLibrary.delete(bookTitle, Integer.parseInt(bookYear));
         return "redirect:/";
     }
@@ -61,12 +62,7 @@ public class BookController {
 
     @PostMapping("/constructor")
     public String savingPage(@Valid @ModelAttribute("book") Book theBook,
-                BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
-            return "construct-page";
-        } else {
-            bookLibrary.add(theBook);
-            return "redirect:/";
-        }
+            BindingResult bindingResult) {
+        return bookLibrary.add(theBook, bindingResult);
     }
 }

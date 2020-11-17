@@ -10,6 +10,7 @@ import com.scratchy.bookshelf.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -60,8 +61,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public void add(Book newBook) {
-        bookDao.add(newBook);
+    public String add(Book newBook, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "construct-page";
+        } else {
+            bookDao.add(newBook);
+            return "redirect:/";
+        }
     }
 
     @Override
