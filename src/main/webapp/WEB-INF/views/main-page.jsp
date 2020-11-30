@@ -70,7 +70,7 @@
       </c:forEach>
     </div>
     <div class="control-section">
-      <a href="/constructor" id="add-link">Add New Book</a>
+      <a href="/constructor" id="add-link">Add New Book</a><br>
       <a id="delete-link" onclick="enableDeleteSection()">Delete Existing Book</a>
     </div>
 

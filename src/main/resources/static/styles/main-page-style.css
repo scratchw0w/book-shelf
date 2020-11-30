@@ -76,7 +76,7 @@ a {
 }
 
 #book-table {
-    border: 1px solid #00FF7F;
+    border: 1px solid #002486;
     margin-top: 15px;
     margin-left: 20px;
     padding-right: 5%;
@@ -110,11 +110,16 @@ a {
     cursor: pointer;
 }
 
+#add-link:hover {
+    color: #7C3705;
+}
+
 #delete-link {
     color: #A52A2A;
 }
 
 #delete-link:hover {
+    color: #7C3705;
     cursor: pointer;
 }
 
@@ -122,6 +127,11 @@ a {
     display: none;
 }
 
+.control-section {
+    margin-left: 85%;
+    align-content: flex-end;
+    text-align: left;
+}
 /* ----------------- MAIN SECTION ENDED ----------------- */
 
 /* ----------------- BOTTOM SECTION STARTED ----------------- */
